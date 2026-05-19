@@ -1,0 +1,448 @@
+<!-- ================= UPDATED PROFILE PAGE ================= -->
+<!-- Save this file as profile.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#0b1220;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:50px;
+}
+
+.logo-box{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#d1d5db;
+    padding:15px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.menu a:hover,
+.menu .active{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    min-height:100vh;
+}
+
+.navbar{
+    height:80px;
+    background:#0b1220;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+}
+
+.content{
+    padding:40px;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+    background:#0b1220;
+    padding:40px;
+    border-radius:25px;
+}
+
+/* TOP */
+
+.profile-top{
+    display:flex;
+    align-items:center;
+    gap:30px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+
+.profile-image{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+    font-weight:bold;
+}
+
+/* GRID */
+
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.info-box{
+    background:#111827;
+    padding:25px;
+    border-radius:20px;
+}
+
+.info-box h3{
+    color:#8b5cf6;
+    margin-bottom:20px;
+}
+
+.info-item{
+    margin-bottom:18px;
+}
+
+.info-item label{
+    display:block;
+    color:#9ca3af;
+    margin-bottom:6px;
+    font-size:14px;
+}
+
+.info-item input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#1f2937;
+    color:white;
+    outline:none;
+}
+
+.save-btn{
+    margin-top:35px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    opacity:0.9;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar h2,
+    .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+        width:calc(100% - 80px);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .content{
+        padding:20px;
+    }
+
+    .profile-card{
+        padding:25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            🛡
+        </div>
+
+        <h2>Cyber Crime</h2>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="dashboard.html">📊 <span>Dashboard</span></a>
+
+        <a href="file-complaint.html">📝 <span>File Complaint</span></a>
+
+        <a href="my-complaints.html">📂 <span>My Complaints</span></a>
+
+        <a href="track-complaint.html">🔍 <span>Track Complaint</span></a>
+
+        <a href="#" class="active">👤 <span>Profile</span></a>
+
+        <a href="logout.html">🚪 <span>Logout</span></a>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h2>User Profile</h2>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <div class="profile-card">
+
+            <!-- TOP -->
+
+            <div class="profile-top">
+
+                <div class="profile-image" id="profileInitial">
+                    U
+                </div>
+
+                <div>
+
+                    <h1 id="profileName">
+                        User Name
+                    </h1>
+
+                    <p id="profileEmail">
+                        user@email.com
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- PROFILE GRID -->
+
+            <div class="profile-grid">
+
+                <!-- PERSONAL INFO -->
+
+                <div class="info-box">
+
+                    <h3>Personal Information</h3>
+
+                    <div class="info-item">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                        >
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                        >
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <label>Phone Number</label>
+
+                        <input
+                            type="text"
+                            id="phone"
+                        >
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <label>Address</label>
+
+                        <input
+                            type="text"
+                            id="address"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SAVE BUTTON -->
+
+            <button class="save-btn" onclick="saveProfile()">
+                Save Profile
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+/* ================= LOAD DATA FROM LOCAL STORAGE ================= */
+
+window.onload = function(){
+
+    const name = localStorage.getItem("userName");
+    const email = localStorage.getItem("userEmail");
+    const phone = localStorage.getItem("userPhone");
+    const address = localStorage.getItem("userAddress");
+
+    if(name){
+
+        document.getElementById("fullName").value = name;
+        document.getElementById("profileName").innerText = name;
+
+        document.getElementById("profileInitial").innerText =
+        name.charAt(0).toUpperCase();
+
+    }
+
+    if(email){
+
+        document.getElementById("email").value = email;
+        document.getElementById("profileEmail").innerText = email;
+
+    }
+
+    if(phone){
+
+        document.getElementById("phone").value = phone;
+
+    }
+
+    if(address){
+
+        document.getElementById("address").value = address;
+
+    }
+
+}
+
+/* ================= SAVE PROFILE ================= */
+
+function saveProfile(){
+
+    const name =
+    document.getElementById("fullName").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const phone =
+    document.getElementById("phone").value;
+
+    const address =
+    document.getElementById("address").value;
+
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPhone", phone);
+    localStorage.setItem("userAddress", address);
+
+    alert("Profile Updated Successfully!");
+
+    document.getElementById("profileName").innerText =
+    name;
+
+    document.getElementById("profileEmail").innerText =
+    email;
+
+    document.getElementById("profileInitial").innerText =
+    name.charAt(0).toUpperCase();
+
+}
+
+</script>
+
+</body>
+</html>

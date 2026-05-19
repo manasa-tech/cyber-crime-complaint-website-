@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>File Complaint</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#0b1220;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:25px;
+    border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:50px;
+}
+
+.logo-box{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.logo h2{
+    font-size:22px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#d1d5db;
+    padding:15px 18px;
+    border-radius:12px;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu a:hover,
+.menu .active{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    min-height:100vh;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:80px;
+    background:#0b1220;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.navbar h2{
+    font-size:28px;
+}
+
+.user-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:40px;
+}
+
+/* ================= FORM CARD ================= */
+
+.form-card{
+    background:#0b1220;
+    border-radius:25px;
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow:0 0 30px rgba(124,58,237,0.1);
+}
+
+.form-card h2{
+    margin-bottom:10px;
+}
+
+.form-card p{
+    color:#9ca3af;
+    margin-bottom:35px;
+}
+
+/* ================= ROW ================= */
+
+.row{
+    display:flex;
+    gap:20px;
+}
+
+.form-group{
+    margin-bottom:22px;
+    flex:1;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#111827;
+    color:white;
+    outline:none;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.form-group textarea{
+    resize:none;
+    height:150px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#7c3aed;
+    box-shadow:0 0 10px rgba(124,58,237,0.3);
+}
+
+/* ================= FILE UPLOAD ================= */
+
+.upload-box{
+    border:2px dashed #7c3aed;
+    padding:40px;
+    text-align:center;
+    border-radius:20px;
+    background:#111827;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.upload-box:hover{
+    background:#1a2235;
+}
+
+.upload-box input{
+    display:none;
+}
+
+.upload-box h3{
+    margin-top:15px;
+}
+
+.upload-box p{
+    margin-top:10px;
+    color:#9ca3af;
+}
+
+/* ================= BUTTON ================= */
+
+.submit-btn{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:15px;
+}
+
+.submit-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(124,58,237,0.3);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .row{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar h2,
+    .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+        width:calc(100% - 80px);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        gap:15px;
+        padding:20px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .form-card{
+        padding:25px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            🛡
+        </div>
+
+        <h2>Cyber Crime</h2>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="dashboard.html">
+            📊 <span>Dashboard</span>
+        </a>
+
+        <a href="#" class="active">
+            📝 <span>File Complaint</span>
+        </a>
+
+        <a href="my-complaints.html">
+            📂 <span>My Complaints</span>
+        </a>
+
+        <a href="track-complaint.html">
+            🔍 <span>Track Complaint</span>
+        </a>
+
+        <a href="profile.html">
+            👤 <span>Profile</span>
+        </a>
+
+        <a href="login.html">
+            🚪 <span>Logout</span>
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h2>File Complaint</h2>
+
+        <div class="user-box">
+
+            <div>
+                <h4>John Doe</h4>
+                <small style="color:#9ca3af;">
+                    Citizen User
+                </small>
+            </div>
+
+            <div class="avatar">
+                J
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <div class="form-card">
+
+            <h2>Submit Cyber Crime Complaint</h2>
+
+            <p>
+                Fill all the required details carefully
+                and upload valid evidence.
+            </p>
+
+            <!-- FORM -->
+
+            <form id="complaintForm">
+
+                <!-- ROW 1 -->
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label>Complaint Title</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter complaint title"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Complaint Type</label>
+
+                        <select required>
+
+                            <option value="">
+                                Select Type
+                            </option>
+
+                            <option>
+                                Online Fraud
+                            </option>
+
+                            <option>
+                                OTP Scam
+                            </option>
+
+                            <option>
+                                Hacking
+                            </option>
+
+                            <option>
+                                Social Media Fraud
+                            </option>
+
+                            <option>
+                                Identity Theft
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- ROW 2 -->
+
+                <div class="row">
+
+                    <div class="form-group">
+
+                        <label>Date of Incident</label>
+
+                        <input type="date" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Suspect Website / Number</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter website or phone number"
+                        >
+
+                    </div>
+
+                </div>
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label>Complaint Description</label>
+
+                    <textarea
+                        placeholder="Describe the cyber crime in detail..."
+                        required
+                    ></textarea>
+
+                </div>
+
+                <!-- FILE UPLOAD -->
+
+                <div class="form-group">
+
+                    <label>Upload Evidence</label>
+
+                    <label class="upload-box">
+
+                        <input type="file" multiple>
+
+                        <div style="font-size:50px;">
+                            📂
+                        </div>
+
+                        <h3>Click to Upload Files</h3>
+
+                        <p>
+                            Upload screenshots, videos,
+                            documents, or evidence
+                        </p>
+
+                    </label>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="submit-btn">
+                    Submit Complaint
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const form = document.getElementById("complaintForm");
+
+form.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    alert("Complaint Submitted Successfully!");
+
+});
+
+</script>
+
+</body>
+</html>

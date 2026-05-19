@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cyber Crime Login</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#050816;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+      padding:20px;
+    }
+
+    /* BACKGROUND EFFECT */
+
+    body::before{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#7c3aed;
+      border-radius:50%;
+      filter:blur(180px);
+      top:-150px;
+      left:-100px;
+      opacity:0.3;
+    }
+
+    body::after{
+      content:'';
+      position:absolute;
+      width:500px;
+      height:500px;
+      background:#2563eb;
+      border-radius:50%;
+      filter:blur(180px);
+      bottom:-150px;
+      right:-100px;
+      opacity:0.3;
+    }
+
+    /* CONTAINER */
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      background:#0b1220;
+      border-radius:30px;
+      overflow:hidden;
+      display:flex;
+      position:relative;
+      z-index:10;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 0 40px rgba(124,58,237,0.2);
+    }
+
+    /* LEFT SIDE */
+
+    .left{
+      flex:1;
+      background:linear-gradient(135deg,#111827,#050816);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:50px;
+    }
+
+    .shield{
+      width:170px;
+      height:170px;
+      border-radius:40px;
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:80px;
+      margin-bottom:30px;
+      box-shadow:0 0 40px rgba(124,58,237,0.4);
+    }
+
+    .left h1{
+      color:white;
+      font-size:40px;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    .left p{
+      color:#9ca3af;
+      text-align:center;
+      line-height:1.8;
+      max-width:400px;
+    }
+
+    /* RIGHT SIDE */
+
+    .right{
+      flex:1;
+      padding:60px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:40px;
+    }
+
+    .logo-box{
+      width:50px;
+      height:50px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:24px;
+      color:white;
+    }
+
+    .logo h2{
+      color:white;
+      font-size:24px;
+    }
+
+    .title{
+      color:white;
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .subtitle{
+      color:#9ca3af;
+      margin-bottom:35px;
+    }
+
+    /* FORM */
+
+    .form-group{
+      margin-bottom:22px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:10px;
+      color:#d1d5db;
+      font-size:14px;
+    }
+
+    .form-group input{
+      width:100%;
+      padding:16px;
+      background:#111827;
+      border:none;
+      border-radius:14px;
+      color:white;
+      outline:none;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .form-group input:focus{
+      border-color:#7c3aed;
+      box-shadow:0 0 10px rgba(124,58,237,0.3);
+    }
+
+    /* OPTIONS */
+
+    .options{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:25px;
+      color:#9ca3af;
+      font-size:14px;
+    }
+
+    .remember{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .remember input{
+      accent-color:#7c3aed;
+    }
+
+    .forgot a{
+      color:#8b5cf6;
+      text-decoration:none;
+    }
+
+    /* BUTTON */
+
+    .login-btn{
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(135deg,#2563eb,#7c3aed);
+      color:white;
+      font-size:16px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .login-btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 20px rgba(124,58,237,0.3);
+    }
+
+    /* REGISTER */
+
+    .register{
+      margin-top:25px;
+      text-align:center;
+      color:#9ca3af;
+    }
+
+    .register a{
+      color:#8b5cf6;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    /* SOCIAL */
+
+    .social{
+      margin-top:35px;
+    }
+
+    .social p{
+      text-align:center;
+      color:#9ca3af;
+      margin-bottom:20px;
+    }
+
+    .social-buttons{
+      display:flex;
+      gap:15px;
+    }
+
+    .social-btn{
+      flex:1;
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      background:#111827;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .social-btn:hover{
+      background:#1f2937;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:950px){
+
+      .container{
+        flex-direction:column;
+      }
+
+      .left{
+        display:none;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .right{
+        padding:35px;
+      }
+
+      .title{
+        font-size:28px;
+      }
+
+      .options{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+      }
+
+      .social-buttons{
+        flex-direction:column;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left">
+
+      <div class="shield">
+        🛡
+      </div>
+
+      <h1>Cyber Crime Portal</h1>
+
+      <p>
+        Securely login to manage complaints,
+        track investigations, upload evidence,
+        and stay protected against cyber threats.
+      </p>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right">
+
+      <!-- LOGO -->
+
+      <div class="logo">
+
+        <div class="logo-box">
+          🔐
+        </div>
+
+        <h2>Cyber Crime</h2>
+
+      </div>
+
+      <!-- TITLE -->
+
+      <h1 class="title">
+        Welcome Back
+      </h1>
+
+      <p class="subtitle">
+        Login to access your cyber security dashboard
+      </p>
+
+      <!-- FORM -->
+
+      <form id="loginForm">
+
+        <div class="form-group">
+
+          <label>Email Address</label>
+
+          <input 
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+          >
+
+        </div>
+
+        <!-- OPTIONS -->
+
+        <div class="options">
+
+          <div class="remember">
+
+            <input type="checkbox">
+
+            <span>Remember Me</span>
+
+          </div>
+
+          <div class="forgot">
+            <a href="#">Forgot Password?</a>
+          </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit" class="login-btn">
+          Login Account
+        </button>
+
+      </form>
+
+      <!-- REGISTER -->
+
+      <div class="register">
+
+        Don't have an account?
+        <a href="register.html">
+          Register Here
+        </a>
+
+      </div>
+
+      <!-- SOCIAL -->
+
+      <div class="social">
+
+        <p>Or login with</p>
+
+        <div class="social-buttons">
+
+          <button class="social-btn">
+            Google
+          </button>
+
+          <button class="social-btn">
+            GitHub
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function(e){
+
+      e.preventDefault();
+
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+      if(email === "" || password === ""){
+
+        alert("Please fill all fields");
+
+      }
+      else{
+
+        alert("Login Successful!");
+
+        // REDIRECT TO DASHBOARD
+
+        window.location.href = "dashboard.html";
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Crime Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#0b1220;
+    padding:25px;
+    border-right:1px solid rgba(255,255,255,0.05);
+    position:fixed;
+    left:0;
+    top:0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:50px;
+}
+
+.logo-icon{
+    width:50px;
+    height:50px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.logo h2{
+    font-size:22px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#d1d5db;
+    padding:15px 18px;
+    border-radius:12px;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu a:hover,
+.menu .active{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    min-height:100vh;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:80px;
+    background:#0b1220;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.search-box{
+    width:350px;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#111827;
+    color:white;
+    outline:none;
+}
+
+.user-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:40px;
+}
+
+/* ================= TOP ================= */
+
+.top-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+.top-section h1{
+    font-size:35px;
+}
+
+.top-section p{
+    color:#9ca3af;
+}
+
+.top-btn{
+    padding:14px 25px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    cursor:pointer;
+    font-size:15px;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-bottom:40px;
+}
+
+.stat-card{
+    background:#0b1220;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px rgba(124,58,237,0.2);
+}
+
+.stat-card h3{
+    color:#9ca3af;
+    margin-bottom:15px;
+}
+
+.stat-card h1{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.stat-card p{
+    color:#10b981;
+    font-size:14px;
+}
+
+/* ================= CHARTS ================= */
+
+.chart-container{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+    margin-bottom:40px;
+}
+
+.chart-card{
+    background:#0b1220;
+    border-radius:20px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.chart-card h2{
+    margin-bottom:25px;
+}
+
+/* FAKE CHART */
+
+.fake-chart{
+    height:250px;
+    display:flex;
+    align-items:flex-end;
+    gap:20px;
+}
+
+.bar{
+    flex:1;
+    background:linear-gradient(to top,#2563eb,#7c3aed);
+    border-radius:12px 12px 0 0;
+}
+
+.bar1{height:120px;}
+.bar2{height:200px;}
+.bar3{height:150px;}
+.bar4{height:240px;}
+.bar5{height:180px;}
+.bar6{height:220px;}
+
+/* CIRCLE */
+
+.circle{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:conic-gradient(
+        #7c3aed 0% 40%,
+        #2563eb 40% 70%,
+        #10b981 70% 100%
+    );
+    margin:auto;
+}
+
+/* ================= TABLE ================= */
+
+.table-card{
+    background:#0b1220;
+    border-radius:20px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+.table-card h2{
+    margin-bottom:25px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:18px;
+    text-align:left;
+}
+
+th{
+    background:#111827;
+}
+
+tr{
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.status{
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.pending{
+    background:#f59e0b33;
+    color:#f59e0b;
+}
+
+.resolved{
+    background:#10b98133;
+    color:#10b981;
+}
+
+.rejected{
+    background:#ef444433;
+    color:#ef4444;
+}
+
+.view-btn{
+    padding:8px 18px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    cursor:pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+    .chart-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar h2,
+    .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+        width:calc(100% - 80px);
+    }
+
+}
+
+@media(max-width:650px){
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        gap:15px;
+        padding:20px;
+    }
+
+    .search-box{
+        width:100%;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🛡
+        </div>
+
+        <h2>Cyber Crime</h2>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="#" class="active">
+            📊 <span>Dashboard</span>
+        </a>
+
+        <a href="#">
+            📝 <span>File Complaint</span>
+        </a>
+
+        <a href="#">
+            📂 <span>My Complaints</span>
+        </a>
+
+        <a href="#">
+            🔍 <span>Track Complaint</span>
+        </a>
+
+        <a href="#">
+            👤 <span>Profile</span>
+        </a>
+
+        <a href="#">
+            🔒 <span>Change Password</span>
+        </a>
+
+        <a href="#">
+            🚪 <span>Logout</span>
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <div class="search-box">
+            <input type="text" placeholder="Search complaints...">
+        </div>
+
+        <div class="user-box">
+
+            <div>
+                <h4>John Doe</h4>
+                <small style="color:#9ca3af;">Citizen User</small>
+            </div>
+
+            <div class="avatar">
+                J
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- TOP -->
+
+        <div class="top-section">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p>Welcome back, stay secure online.</p>
+            </div>
+
+            <button class="top-btn">
+                + New Complaint
+            </button>
+
+        </div>
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>Total Complaints</h3>
+                <h1>120</h1>
+                <p>+12% this month</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Under Investigation</h3>
+                <h1>58</h1>
+                <p>Active cases</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Resolved Cases</h3>
+                <h1>42</h1>
+                <p>Successfully solved</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Rejected Cases</h3>
+                <h1>20</h1>
+                <p>Closed reports</p>
+            </div>
+
+        </div>
+
+        <!-- CHARTS -->
+
+        <div class="chart-container">
+
+            <div class="chart-card">
+
+                <h2>Complaint Overview</h2>
+
+                <div class="fake-chart">
+
+                    <div class="bar bar1"></div>
+                    <div class="bar bar2"></div>
+                    <div class="bar bar3"></div>
+                    <div class="bar bar4"></div>
+                    <div class="bar bar5"></div>
+                    <div class="bar bar6"></div>
+
+                </div>
+
+            </div>
+
+            <div class="chart-card">
+
+                <h2>Complaint Ratio</h2>
+
+                <div class="circle"></div>
+
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="table-card">
+
+            <h2>Recent Complaints</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td>CC1023</td>
+                    <td>Online Fraud</td>
+                    <td>19 May 2026</td>
+                    <td>
+                        <span class="status pending">
+                            Pending
+                        </span>
+                    </td>
+                    <td>
+                        <button class="view-btn">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CC1024</td>
+                    <td>OTP Scam</td>
+                    <td>18 May 2026</td>
+                    <td>
+                        <span class="status resolved">
+                            Resolved
+                        </span>
+                    </td>
+                    <td>
+                        <button class="view-btn">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>CC1025</td>
+                    <td>Social Media Fraud</td>
+                    <td>17 May 2026</td>
+                    <td>
+                        <span class="status rejected">
+                            Rejected
+                        </span>
+                    </td>
+                    <td>
+                        <button class="view-btn">
+                            View
+                        </button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.querySelector(".top-btn")
+.addEventListener("click",function(){
+
+    alert("Redirect to complaint page");
+
+});
+
+</script>
+
+</body>
+</html>

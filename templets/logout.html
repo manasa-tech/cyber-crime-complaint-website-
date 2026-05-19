@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Logout</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+    padding:20px;
+}
+
+/* ================= BACKGROUND EFFECT ================= */
+
+body::before{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#7c3aed;
+    border-radius:50%;
+    filter:blur(180px);
+    top:-150px;
+    left:-150px;
+    opacity:0.25;
+}
+
+body::after{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:#2563eb;
+    border-radius:50%;
+    filter:blur(180px);
+    bottom:-150px;
+    right:-150px;
+    opacity:0.25;
+}
+
+/* ================= LOGOUT CARD ================= */
+
+.logout-card{
+    width:100%;
+    max-width:500px;
+    background:#0b1220;
+    border-radius:30px;
+    padding:50px;
+    text-align:center;
+    position:relative;
+    z-index:10;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow:0 0 40px rgba(124,58,237,0.2);
+}
+
+/* ICON */
+
+.logout-icon{
+    width:130px;
+    height:130px;
+    margin:auto;
+    margin-bottom:30px;
+    border-radius:35px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    box-shadow:0 0 30px rgba(124,58,237,0.4);
+}
+
+/* TEXT */
+
+.logout-card h1{
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.logout-card p{
+    color:#9ca3af;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+/* BUTTONS */
+
+.button-group{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.logout-btn,
+.cancel-btn{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logout-btn{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+.cancel-btn{
+    background:#111827;
+    color:white;
+}
+
+.logout-btn:hover,
+.cancel-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+.footer-text{
+    margin-top:35px;
+    color:#6b7280;
+    font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .logout-card{
+        padding:35px 25px;
+    }
+
+    .logout-card h1{
+        font-size:30px;
+    }
+
+    .button-group{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= LOGOUT CARD ================= -->
+
+<div class="logout-card">
+
+    <div class="logout-icon">
+        🚪
+    </div>
+
+    <h1>Logout Account</h1>
+
+    <p>
+        Are you sure you want to logout from the
+        Cyber Crime Portal? You will need to login
+        again to access your dashboard and complaints.
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div class="button-group">
+
+        <button class="cancel-btn">
+            Cancel
+        </button>
+
+        <button class="logout-btn">
+            Logout
+        </button>
+
+    </div>
+
+    <div class="footer-text">
+        Cyber Crime Protection System © 2026
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* CANCEL BUTTON */
+
+document.querySelector(".cancel-btn")
+.addEventListener("click", () => {
+
+    window.location.href = "dashboard.html";
+
+});
+
+/* LOGOUT BUTTON */
+
+document.querySelector(".logout-btn")
+.addEventListener("click", () => {
+
+    alert("Logout Successful!");
+
+    window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+</html>

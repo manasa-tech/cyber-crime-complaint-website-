@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Complaints</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#050816;
+    color:white;
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#0b1220;
+    position:fixed;
+    left:0;
+    top:0;
+    padding:25px;
+    border-right:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:50px;
+}
+
+.logo-box{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+}
+
+.logo h2{
+    font-size:22px;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#d1d5db;
+    padding:15px 18px;
+    border-radius:12px;
+    transition:0.3s;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.menu a:hover,
+.menu .active{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    min-height:100vh;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:80px;
+    background:#0b1220;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 40px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.navbar h2{
+    font-size:28px;
+}
+
+.user-box{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:40px;
+}
+
+/* ================= TOP BAR ================= */
+
+.top-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    gap:20px;
+}
+
+.search-box{
+    flex:1;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#111827;
+    color:white;
+    outline:none;
+}
+
+.filter-btn{
+    padding:14px 22px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    cursor:pointer;
+}
+
+/* ================= COMPLAINT CARDS ================= */
+
+.complaints-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.complaint-card{
+    background:#0b1220;
+    border-radius:25px;
+    padding:30px;
+    border:1px solid rgba(255,255,255,0.05);
+    transition:0.3s;
+    position:relative;
+}
+
+.complaint-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 30px rgba(124,58,237,0.2);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.card-id{
+    color:#8b5cf6;
+    font-weight:600;
+}
+
+.status{
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:13px;
+    font-weight:500;
+}
+
+.pending{
+    background:#f59e0b33;
+    color:#f59e0b;
+}
+
+.resolved{
+    background:#10b98133;
+    color:#10b981;
+}
+
+.rejected{
+    background:#ef444433;
+    color:#ef4444;
+}
+
+.complaint-card h3{
+    margin-bottom:15px;
+    font-size:22px;
+}
+
+.description{
+    color:#9ca3af;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.details{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.card-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.view-btn,
+.track-btn{
+    flex:1;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.view-btn{
+    background:#111827;
+    color:white;
+}
+
+.track-btn{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+}
+
+.view-btn:hover,
+.track-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    .sidebar{
+        width:80px;
+    }
+
+    .sidebar h2,
+    .menu span{
+        display:none;
+    }
+
+    .main{
+        margin-left:80px;
+        width:calc(100% - 80px);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .top-bar{
+        flex-direction:column;
+    }
+
+    .navbar{
+        flex-direction:column;
+        height:auto;
+        gap:15px;
+        padding:20px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .complaints-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            🛡
+        </div>
+
+        <h2>Cyber Crime</h2>
+
+    </div>
+
+    <div class="menu">
+
+        <a href="dashboard.html">
+            📊 <span>Dashboard</span>
+        </a>
+
+        <a href="file-complaint.html">
+            📝 <span>File Complaint</span>
+        </a>
+
+        <a href="#" class="active">
+            📂 <span>My Complaints</span>
+        </a>
+
+        <a href="track-complaint.html">
+            🔍 <span>Track Complaint</span>
+        </a>
+
+        <a href="profile.html">
+            👤 <span>Profile</span>
+        </a>
+
+        <a href="login.html">
+            🚪 <span>Logout</span>
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <!-- NAVBAR -->
+
+    <div class="navbar">
+
+        <h2>My Complaints</h2>
+
+        <div class="user-box">
+
+            <div>
+                <h4>John Doe</h4>
+                <small style="color:#9ca3af;">
+                    Citizen User
+                </small>
+            </div>
+
+            <div class="avatar">
+                J
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search complaints..."
+                >
+
+            </div>
+
+            <button class="filter-btn">
+                Filter Complaints
+            </button>
+
+        </div>
+
+        <!-- COMPLAINT CARDS -->
+
+        <div class="complaints-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="complaint-card">
+
+                <div class="card-top">
+
+                    <div class="card-id">
+                        #CC1023
+                    </div>
+
+                    <div class="status pending">
+                        Pending
+                    </div>
+
+                </div>
+
+                <h3>Online Fraud</h3>
+
+                <p class="description">
+                    Fraud transaction happened through
+                    fake payment gateway website and
+                    unauthorized money transfer.
+                </p>
+
+                <div class="details">
+
+                    <span>📅 19 May 2026</span>
+
+                    <span>📍 Bangalore</span>
+
+                </div>
+
+                <div class="card-buttons">
+
+                    <button class="view-btn">
+                        View Details
+                    </button>
+
+                    <button class="track-btn">
+                        Track
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="complaint-card">
+
+                <div class="card-top">
+
+                    <div class="card-id">
+                        #CC1024
+                    </div>
+
+                    <div class="status resolved">
+                        Resolved
+                    </div>
+
+                </div>
+
+                <h3>OTP Scam</h3>
+
+                <p class="description">
+                    Received fake OTP call from scammer
+                    pretending to be bank support and
+                    attempted account access.
+                </p>
+
+                <div class="details">
+
+                    <span>📅 18 May 2026</span>
+
+                    <span>📍 Hyderabad</span>
+
+                </div>
+
+                <div class="card-buttons">
+
+                    <button class="view-btn">
+                        View Details
+                    </button>
+
+                    <button class="track-btn">
+                        Track
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="complaint-card">
+
+                <div class="card-top">
+
+                    <div class="card-id">
+                        #CC1025
+                    </div>
+
+                    <div class="status rejected">
+                        Rejected
+                    </div>
+
+                </div>
+
+                <h3>Social Media Fraud</h3>
+
+                <p class="description">
+                    Fake social media profile created
+                    using personal information and
+                    used for suspicious activities.
+                </p>
+
+                <div class="details">
+
+                    <span>📅 17 May 2026</span>
+
+                    <span>📍 Chennai</span>
+
+                </div>
+
+                <div class="card-buttons">
+
+                    <button class="view-btn">
+                        View Details
+                    </button>
+
+                    <button class="track-btn">
+                        Track
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+const viewButtons = document.querySelectorAll(".view-btn");
+
+viewButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        alert("Opening Complaint Details");
+
+    });
+
+});
+
+const trackButtons = document.querySelectorAll(".track-btn");
+
+trackButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        alert("Tracking Complaint");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
