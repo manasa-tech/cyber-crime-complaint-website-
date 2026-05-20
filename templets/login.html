@@ -457,33 +457,39 @@
 
   <script>
 
-    const form = document.getElementById("loginForm");
+function loginUser(){
 
-    form.addEventListener("submit", function(e){
+    const email =
+    document.getElementById("email").value;
 
-      e.preventDefault();
+    const password =
+    document.getElementById("password").value;
 
-      let email = document.getElementById("email").value;
-      let password = document.getElementById("password").value;
+    const savedEmail =
+    localStorage.getItem("userEmail");
 
-      if(email === "" || password === ""){
+    const savedPassword =
+    localStorage.getItem("userPassword");
 
-        alert("Please fill all fields");
+    if(
+        email === savedEmail &&
+        password === savedPassword
+    ){
 
-      }
-      else{
+        localStorage.setItem("isLoggedIn", "true");
 
         alert("Login Successful!");
 
-        // REDIRECT TO DASHBOARD
-
         window.location.href = "dashboard.html";
 
-      }
+    }
 
-    });
+    else{
 
-  </script>
+        alert("Invalid Email or Password");
 
-</body>
-</html>
+    }
+
+}
+
+</script>

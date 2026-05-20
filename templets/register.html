@@ -492,19 +492,29 @@
 
   <script>
 
-    const form = document.getElementById("registerForm");
+function registerUser(){
 
-    form.addEventListener("submit", function(e){
+    const name =
+    document.getElementById("name").value;
 
-      e.preventDefault();
+    const email =
+    document.getElementById("email").value;
 
-      alert("Registration Successful!");
+    const password =
+    document.getElementById("password").value;
 
-      window.location.href = "login.html";
+    /* SAVE DATA */
 
-    });
+    localStorage.setItem("userName", name);
 
-  </script>
+    localStorage.setItem("userEmail", email);
 
-</body>
-</html>
+    localStorage.setItem("userPassword", password);
+
+    alert("Registration Successful!");
+
+    window.location.href = "login.html";
+
+}
+
+</script>

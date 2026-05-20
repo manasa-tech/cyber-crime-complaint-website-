@@ -391,27 +391,27 @@ tr{
             📊 <span>Dashboard</span>
         </a>
 
-        <a href="#">
+        <a href="file-complaints.html">
             📝 <span>File Complaint</span>
         </a>
 
-        <a href="#">
+        <a href="my-complaints.html">
             📂 <span>My Complaints</span>
         </a>
 
-        <a href="#">
+        <a href="track-complaints.html">
             🔍 <span>Track Complaint</span>
         </a>
 
-        <a href="#">
+        <a href="profile.html">
             👤 <span>Profile</span>
         </a>
 
-        <a href="#">
+        <a href="changepassword.html">
             🔒 <span>Change Password</span>
         </a>
 
-        <a href="#">
+        <a href="logout.html">
             🚪 <span>Logout</span>
         </a>
 
@@ -434,14 +434,15 @@ tr{
         <div class="user-box">
 
             <div>
-                <h4>John Doe</h4>
+                <h4 id="dashboardUserName">
+    User
+</h4>
                 <small style="color:#9ca3af;">Citizen User</small>
             </div>
 
-            <div class="avatar">
-                J
-            </div>
-
+            <div class="avatar" id="dashboardAvatar">
+    U
+</div>
         </div>
 
     </div>
@@ -600,14 +601,27 @@ tr{
 
 <script>
 
-document.querySelector(".top-btn")
-.addEventListener("click",function(){
+/* GET USER DATA */
 
-    alert("Redirect to complaint page");
+const userName =
+localStorage.getItem("userName");
 
-});
+const userEmail =
+localStorage.getItem("userEmail");
+
+/* UPDATE DASHBOARD */
+
+if(userName){
+
+    document.getElementById(
+        "dashboardUserName"
+    ).innerText = userName;
+
+    document.getElementById(
+        "dashboardAvatar"
+    ).innerText =
+    userName.charAt(0).toUpperCase();
+
+}
 
 </script>
-
-</body>
-</html>
