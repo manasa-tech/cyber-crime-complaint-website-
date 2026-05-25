@@ -1,0 +1,427 @@
+<!-- ================= CONTACT SECTION ================= -->
+
+<section id="contact" class="contact-section">
+
+    <!-- TITLE -->
+
+    <div class="contact-title">
+
+        <span class="contact-tag">
+            CONTACT US
+        </span>
+
+        <h2>
+            Get In Touch With Us
+        </h2>
+
+        <p>
+            Need help regarding cyber security or complaint support?
+            Contact our team anytime for assistance and guidance.
+        </p>
+
+    </div>
+
+    <!-- CONTACT CONTAINER -->
+
+    <div class="contact-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="contact-info">
+
+            <!-- CARD 1 -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <h3>Address</h3>
+
+                    <p>
+                        Bangalore, Karnataka, India
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📞
+                </div>
+
+                <div>
+
+                    <h3>Phone</h3>
+
+                    <p>
+                        +91 9876543210
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    📧
+                </div>
+
+                <div>
+
+                    <h3>Email</h3>
+
+                    <p>
+                        support@cybercrime.com
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 4 -->
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <h3>Website</h3>
+
+                    <p>
+                        www.cybercrimeportal.com
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE FORM -->
+
+        <div class="contact-form">
+
+            <form id="contactForm">
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        placeholder="Enter Your Name"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <input
+                        type="email"
+                        placeholder="Enter Your Email"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        placeholder="Subject"
+                        required
+                    >
+
+                </div>
+
+                <div class="input-group">
+
+                    <textarea
+                        rows="6"
+                        placeholder="Enter Your Message"
+                        required
+                    ></textarea>
+
+                </div>
+
+                <button type="submit" class="contact-btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CSS CODE ================= -->
+
+<style>
+
+/* CONTACT SECTION */
+
+.contact-section{
+    width:100%;
+    min-height:100vh;
+    background:#050816;
+    color:white;
+    padding:100px 80px;
+}
+
+/* TITLE */
+
+.contact-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+/* TAG */
+
+.contact-tag{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:30px;
+    background:#111827;
+    color:#8b5cf6;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+/* HEADING */
+
+.contact-title h2{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+/* PARAGRAPH */
+
+.contact-title p{
+    max-width:700px;
+    margin:auto;
+    color:#9ca3af;
+    line-height:1.8;
+}
+
+/* CONTAINER */
+
+.contact-container{
+    display:flex;
+    justify-content:space-between;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+/* LEFT SIDE */
+
+.contact-info{
+    flex:1;
+    min-width:320px;
+
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+/* INFO CARD */
+
+.info-card{
+    background:#0b1220;
+    padding:28px;
+    border-radius:24px;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    transition:0.4s;
+}
+
+/* HOVER */
+
+.info-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 0 25px rgba(124,58,237,0.2);
+}
+
+/* ICON */
+
+.info-icon{
+    width:75px;
+    height:75px;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:32px;
+}
+
+/* TEXT */
+
+.info-card h3{
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:#9ca3af;
+}
+
+/* FORM */
+
+.contact-form{
+    flex:1;
+    min-width:320px;
+
+    background:#0b1220;
+
+    padding:40px;
+    border-radius:30px;
+
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+/* INPUT GROUP */
+
+.input-group{
+    margin-bottom:25px;
+}
+
+/* INPUT */
+
+.input-group input,
+.input-group textarea{
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:16px;
+
+    background:#111827;
+    color:white;
+
+    font-size:15px;
+
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+/* FOCUS */
+
+.input-group input:focus,
+.input-group textarea:focus{
+    border-color:#7c3aed;
+}
+
+/* BUTTON */
+
+.contact-btn{
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color:white;
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+/* HOVER */
+
+.contact-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 25px rgba(124,58,237,0.3);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .contact-section{
+        padding:70px 20px;
+    }
+
+    .contact-title h2{
+        font-size:40px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .contact-title h2{
+        font-size:32px;
+    }
+
+    .contact-form{
+        padding:25px;
+    }
+
+}
+
+</style>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+document
+.getElementById("contactForm")
+
+.addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    alert(
+        "Message Sent Successfully!"
+    );
+
+    this.reset();
+
+});
+
+</script>

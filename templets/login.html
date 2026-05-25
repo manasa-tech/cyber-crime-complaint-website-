@@ -364,7 +364,7 @@
 
       <!-- FORM -->
 
-      <form id="loginForm">
+      <form onsubmit="loginUser(event)">
 
         <div class="form-group">
 
@@ -455,38 +455,86 @@
 
   <!-- JAVASCRIPT -->
 
-  <script>
+ <script>
 
-function loginUser(){
+function loginUser(event){
+
+    /* STOP FORM SUBMIT */
+
+    event.preventDefault();
+
+    /* GET INPUT VALUES */
 
     const email =
-    document.getElementById("email").value;
+    document.getElementById(
+        "email"
+    ).value.trim();
 
     const password =
-    document.getElementById("password").value;
+    document.getElementById(
+        "password"
+    ).value.trim();
+
+    /* GET REGISTERED USER DATA */
 
     const savedEmail =
-    localStorage.getItem("userEmail");
+    localStorage.getItem(
+        "userEmail"
+    );
 
     const savedPassword =
-    localStorage.getItem("userPassword");
+    localStorage.getItem(
+        "userPassword"
+    );
+
+    /* CHECK IF USER EXISTS */
+
+    if(savedEmail === null ||
+       savedPassword === null){
+
+        alert(
+            "No account found! Please register first."
+        );
+
+        window.location.href =
+        "register.html";
+
+        return;
+
+    }
+
+    /* LOGIN VALIDATION */
 
     if(
         email === savedEmail &&
         password === savedPassword
     ){
 
-        localStorage.setItem("isLoggedIn", "true");
+        /* SAVE LOGIN STATUS */
 
-        alert("Login Successful!");
+        localStorage.setItem(
+            "isLoggedIn",
+            "true"
+        );
 
-        window.location.href = "dashboard.html";
+        /* SUCCESS MESSAGE */
+
+        alert(
+            "Login Successful!"
+        );
+
+        /* REDIRECT TO DASHBOARD */
+
+        window.location.href =
+        "dashboard.html";
 
     }
 
     else{
 
-        alert("Invalid Email or Password");
+        alert(
+            "Invalid Email or Password"
+        );
 
     }
 

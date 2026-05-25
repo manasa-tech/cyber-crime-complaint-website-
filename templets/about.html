@@ -1,0 +1,311 @@
+<!-- ================= ABOUT SECTION ================= -->
+
+<section id="about" class="about-section">
+
+    <!-- LEFT CONTENT -->
+
+    <div class="about-content">
+
+        <span class="about-tag">
+            ABOUT US
+        </span>
+
+        <h2>
+            Secure Digital Protection
+            Against Cyber Crime
+        </h2>
+
+        <p>
+            The Cyber Crime Complaint Management System is a
+            modern security platform designed to help citizens
+            report cyber crimes safely and efficiently.
+            Users can submit complaints, upload evidence,
+            track investigation progress, and manage their
+            cyber security information through a secure portal.
+        </p>
+
+        <p>
+            Our mission is to create a safer digital environment
+            by improving cyber awareness, enabling faster
+            complaint handling, and supporting secure online systems.
+        </p>
+
+        <!-- ABOUT BUTTONS -->
+
+        <div class="about-buttons">
+
+            <a href="register.html" class="about-btn">
+                Get Started
+            </a>
+
+            <a href="#contact" class="learn-btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="about-image-section">
+
+        <div class="about-card">
+
+            <div class="card-icon">
+                🛡
+            </div>
+
+            <h3>Cyber Security</h3>
+
+            <p>
+                Protecting users against
+                digital threats and fraud.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <div class="card-icon">
+                🔒
+            </div>
+
+            <h3>Secure Data</h3>
+
+            <p>
+                User information remains
+                safe and encrypted.
+            </p>
+
+        </div>
+
+        <div class="about-card">
+
+            <div class="card-icon">
+                🌐
+            </div>
+
+            <h3>Digital Awareness</h3>
+
+            <p>
+                Promoting safe internet
+                practices for everyone.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CSS CODE ================= -->
+
+<style>
+
+/* ABOUT SECTION */
+
+.about-section{
+    width:100%;
+    min-height:100vh;
+    background:#050816;
+    color:white;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:60px;
+
+    padding:100px 80px;
+    flex-wrap:wrap;
+}
+
+/* LEFT SIDE */
+
+.about-content{
+    flex:1;
+    min-width:320px;
+}
+
+/* TAG */
+
+.about-tag{
+    display:inline-block;
+    padding:10px 22px;
+    background:#111827;
+    border-radius:30px;
+    color:#8b5cf6;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+/* HEADING */
+
+.about-content h2{
+    font-size:52px;
+    line-height:1.3;
+    margin-bottom:30px;
+}
+
+/* PARAGRAPH */
+
+.about-content p{
+    color:#9ca3af;
+    line-height:1.9;
+    margin-bottom:22px;
+    font-size:16px;
+}
+
+/* BUTTONS */
+
+.about-buttons{
+    display:flex;
+    gap:20px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+/* BUTTON STYLE */
+
+.about-btn,
+.learn-btn{
+    padding:15px 28px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+/* PRIMARY BUTTON */
+
+.about-btn{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    color:white;
+}
+
+/* SECOND BUTTON */
+
+.learn-btn{
+    background:#111827;
+    color:white;
+}
+
+/* HOVER */
+
+.about-btn:hover,
+.learn-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* RIGHT SIDE */
+
+.about-image-section{
+    flex:1;
+    min-width:320px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+}
+
+/* CARD */
+
+.about-card{
+    background:#0b1220;
+    padding:35px 28px;
+    border-radius:28px;
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    transition:0.4s;
+}
+
+/* HOVER EFFECT */
+
+.about-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 0 30px rgba(124,58,237,0.2);
+}
+
+/* ICON */
+
+.card-icon{
+    width:85px;
+    height:85px;
+
+    margin:auto;
+    margin-bottom:25px;
+
+    border-radius:25px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:40px;
+}
+
+/* CARD TEXT */
+
+.about-card h3{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.about-card p{
+    color:#9ca3af;
+    line-height:1.7;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+    .about-section{
+        padding:70px 20px;
+        flex-direction:column;
+    }
+
+    .about-content h2{
+        font-size:40px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .about-content h2{
+        font-size:32px;
+    }
+
+    .about-buttons{
+        flex-direction:column;
+    }
+
+    .about-btn,
+    .learn-btn{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>

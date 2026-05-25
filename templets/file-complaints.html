@@ -380,7 +380,7 @@ body{
 
             <!-- FORM -->
 
-            <form id="complaintForm">
+           <form onsubmit="submitComplaint(event)">
 
                 <!-- ROW 1 -->
 
@@ -402,7 +402,7 @@ body{
 
                         <label>Complaint Type</label>
 
-                        <select required>
+                        <select id="category">
 
                             <option value="">
                                 Select Type
@@ -466,10 +466,8 @@ body{
                     <label>Complaint Description</label>
 
                     <textarea
-                        placeholder="Describe the cyber crime in detail..."
-                        required
-                    ></textarea>
-
+id="description"
+placeholder="Description"></textarea>
                 </div>
 
                 <!-- FILE UPLOAD -->
@@ -515,15 +513,66 @@ body{
 
 <script>
 
-const form = document.getElementById("complaintForm");
+function submitComplaint(event){
 
-form.addEventListener("submit", function(e){
+    event.preventDefault();
 
-    e.preventDefault();
+    const title =
+    document.getElementById(
+        "title"
+    ).value;
 
-    alert("Complaint Submitted Successfully!");
+    const description =
+    document.getElementById(
+        "description"
+    ).value;
 
-});
+    const category =
+    document.getElementById(
+        "category"
+    ).value;
+
+    const complaint = {
+
+        id: Date.now(),
+
+        title: title,
+
+        description: description,
+
+        category: category,
+
+        status: "Pending"
+
+    };
+
+    let complaints =
+    JSON.parse(
+        localStorage.getItem(
+            "complaints"
+        )
+    ) || [];
+
+    complaints.push(
+        complaint
+    );
+
+    localStorage.setItem(
+        "complaints",
+
+        JSON.stringify(
+            complaints
+        )
+    );
+
+    alert(
+        "Complaint Submitted!"
+    );
+
+    window.location.href =
+    "my-complaints.html";
+
+}
 
 </script>
 

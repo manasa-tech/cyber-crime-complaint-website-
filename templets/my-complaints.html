@@ -412,7 +412,7 @@ body{
         <!-- COMPLAINT CARDS -->
 
         <div class="complaints-grid">
-
+            <div id="complaintList"></div>
             <!-- CARD 1 -->
 
             <div class="complaint-card">
@@ -561,29 +561,52 @@ body{
 
 <script>
 
-const viewButtons = document.querySelectorAll(".view-btn");
+const complaints =
+JSON.parse(
+    localStorage.getItem(
+        "complaints"
+    )
+) || [];
 
-viewButtons.forEach(button => {
+const complaintList =
+document.getElementById(
+    "complaintList"
+);
 
-    button.addEventListener("click", () => {
+if(complaints.length === 0){
 
-        alert("Opening Complaint Details");
+    complaintList.innerHTML =
+    "<h2>No Complaints Found</h2>";
+
+}
+
+else{
+
+    complaints.forEach(function(item){
+
+        complaintList.innerHTML += `
+
+        <div class="card">
+
+            <h2>${item.title}</h2>
+
+            <p>${item.description}</p>
+
+            <h4>
+                ${item.category}
+            </h4>
+
+            <h3>
+                ${item.status}
+            </h3>
+
+        </div>
+
+        `;
 
     });
 
-});
-
-const trackButtons = document.querySelectorAll(".track-btn");
-
-trackButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        alert("Tracking Complaint");
-
-    });
-
-});
+}
 
 </script>
 

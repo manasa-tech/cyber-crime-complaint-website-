@@ -446,6 +446,7 @@ body{
         <!-- TRACK DETAILS -->
 
         <div class="track-card">
+            <div id="trackContainer"></div>
 
             <div class="track-header">
 
@@ -613,11 +614,36 @@ body{
 
 <script>
 
-const searchBtn = document.querySelector(".search-btn");
+const complaints =
+JSON.parse(
+    localStorage.getItem(
+        "complaints"
+    )
+) || [];
 
-searchBtn.addEventListener("click", () => {
+const trackContainer =
+document.getElementById(
+    "trackContainer"
+);
 
-    alert("Fetching Complaint Status...");
+complaints.forEach(function(item){
+
+    trackContainer.innerHTML += `
+
+    <div class="track-card">
+
+        <h2>
+            ${item.title}
+        </h2>
+
+        <h3>
+            Status:
+            ${item.status}
+        </h3>
+
+    </div>
+
+    `;
 
 });
 
