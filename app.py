@@ -1,16 +1,27 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
 
-app = Flask(__name__, template_folder='templates')
+# =========================
+# Flask App Configuration
+# =========================
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates")
+)
+
+# =========================
 # Database Configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cybercrime.db'
+# =========================
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'cybercrime.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
 # =========================
-# User Table
+# User Model
 # =========================
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,7 +30,7 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
 
 # =========================
-# Complaint Table
+# Complaint Model
 # =========================
 class Complaint(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,13 +39,19 @@ class Complaint(db.Model):
     description = db.Column(db.Text, nullable=False)
     status = db.Column(db.String(50), default='Pending')
 
-import os
-
+# =========================
+# Test Route
+# =========================
 @app.route('/test')
 def test():
-    return str(os.listdir('templates'))
+    try:
+        files = os.listdir(os.path.join(BASE_DIR, "templates"))
+        return "<br>".join(files)
+    except Exception as e:
+        return str(e)
+
 # =========================
-# Home Page
+# Home
 # =========================
 @app.route('/')
 def home():
@@ -48,20 +65,25 @@ def register():
 
     if request.method == 'POST':
 
-        username = request.form.get('username')
-        email = request.form.get('email')
-        password = request.form.get('password')
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
-        user = User(
+        existing_user = User.query.filter_by(email=email).first()
+
+        if existing_user:
+            return "Email already exists!"
+
+        new_user = User(
             username=username,
             email=email,
             password=password
         )
 
-        db.session.add(user)
+        db.session.add(new_user)
         db.session.commit()
 
-        return redirect('/login')
+        return redirect(url_for('login'))
 
     return render_template('register.html')
 
@@ -73,8 +95,8 @@ def login():
 
     if request.method == 'POST':
 
-        email = request.form.get('email')
-        password = request.form.get('password')
+        email = request.form['email']
+        password = request.form['password']
 
         user = User.query.filter_by(
             email=email,
@@ -82,9 +104,9 @@ def login():
         ).first()
 
         if user:
-            return redirect('/dashboard')
+            return redirect(url_for('dashboard'))
 
-        return "Invalid Login"
+        return "Invalid Email or Password"
 
     return render_template('login.html')
 
@@ -103,9 +125,9 @@ def file_complaints():
 
     if request.method == 'POST':
 
-        fullname = request.form.get('fullname')
-        complaint_type = request.form.get('complaint_type')
-        description = request.form.get('description')
+        fullname = request.form['fullname']
+        complaint_type = request.form['complaint_type']
+        description = request.form['description']
 
         complaint = Complaint(
             fullname=fullname,
@@ -116,7 +138,7 @@ def file_complaints():
         db.session.add(complaint)
         db.session.commit()
 
-        return redirect('/my-complaints')
+        return redirect(url_for('my_complaints'))
 
     return render_template('file-complaints.html')
 
@@ -175,7 +197,7 @@ def logout():
     return render_template('logout.html')
 
 # =========================
-# Create Tables
+# Create Database Tables
 # =========================
 with app.app_context():
     db.create_all()
@@ -184,4 +206,13 @@ with app.app_context():
 # Run App
 # =========================
 if __name__ == '__main__':
+    print("Current Directory:", os.getcwd())
+    print("Templates Folder:", os.path.join(BASE_DIR, "templates"))
+
+    if os.path.exists(os.path.join(BASE_DIR, "templates")):
+        print("Templates Found:")
+        print(os.listdir(os.path.join(BASE_DIR, "templates")))
+    else:
+        print("Templates folder NOT FOUND!")
+
     app.run(debug=True)
